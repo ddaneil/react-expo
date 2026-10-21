@@ -1,4 +1,5 @@
 import { Drawer } from "expo-router/drawer";
+import { halloweenStyles } from "@/constants/globalStyles";
 
 export default function Layout(){
     return (

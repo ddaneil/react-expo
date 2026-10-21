@@ -1,36 +1,26 @@
-import React, { useState } from "react";
-import { View, Text, ScrollView, Button, ActivityIndicator, RefreshControl } from "react-native";
+import { View, Text } from 'react-native';
+import { Link } from 'expo-router';
+import { halloweenStyles } from '../constants/globalStyles';
 
-export default function app() {
-    const [isLoading, setIsLoading] = useState(false);
-    const [isPullLoading, setIsPullLoading] = useState(false);
+export default function Index() {
+  return (
+    <View style={halloweenStyles.container}>
+      {/* Basic Link acting as a button
+      <Link href="https://expo.dev" style={styles.button}>
+        <Text style={styles.buttonText}>Open Expo Website</Text>
+      </Link> */}
 
-    const processLoading = () => {
-        setIsLoading(true);
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 3000);
-    }
-    
-    const processPullLoading = () => {
-        setIsPullLoading(true);
-        setTimeout(() => {
-            setIsPullLoading(false);
-        }, 6000);
-    }
+      <Text style={halloweenStyles.spookyHeader}>SELECTION MENU</Text>
 
-    return (
-        <ScrollView refreshControl={
-            <RefreshControl refreshing={isPullLoading} onRefresh={processPullLoading}/>
-        }>
-            <Button title="Send" onPress={processLoading}/>
+      {/* Internal App Route */}
+      <Link href="/forms" style={halloweenStyles.pumpkinButton}>
+        <Text style={halloweenStyles.pumpkinButtonText}>Forms</Text>
+      </Link>
 
-            {
-                isLoading &&
-                <View>
-                    <ActivityIndicator size={"large"} color={"#a10000"}/>
-                </View>
-            }
-        </ScrollView>
-    )
+      <Link href="/loadingAndPullRefresh" style={halloweenStyles.pumpkinButton}>
+        <Text style={halloweenStyles.pumpkinButtonText}>Loading and Pull Refresh</Text>
+      </Link>
+    </View>
+  );
 }
+
